@@ -1,6 +1,0 @@
-#!/bin/bash
-
-t_docker=$(./dockercompose)
-
-$t_docker down
-echo "Contenedores detenidos"

@@ -1,6 +1,0 @@
-#!/bin/bash
-
-t_docker=$(./dockercompose)
-
-$t_docker laravel_app php artisan migrate
-echo "Migraciones ejecutadas"
