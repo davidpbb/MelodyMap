@@ -1,0 +1,5 @@
+#!/bin/bash
+
+bin/stop
+bin/start
+echo "Contenedores reiniciados"

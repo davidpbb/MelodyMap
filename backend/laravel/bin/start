@@ -1,0 +1,6 @@
+#!/bin/bash
+
+t_docker=$(./dockercompose)
+
+echo "Levantando contenedores..."
+$t_docker compose up -d

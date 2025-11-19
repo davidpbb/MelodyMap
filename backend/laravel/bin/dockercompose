@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if command -v docker-compose >/dev/null 2>&1; then
+    echo "docker-compose"
+elif docker compose version >/dev/null 2>&1; then
+    echo "docker compose"
+else
+    echo "No se encontró docker-compose ni docker compose. Instala Docker."
+    exit 1
+fi
