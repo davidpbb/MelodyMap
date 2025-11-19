@@ -9,7 +9,7 @@ class ArtistFactory extends Factory {
     public function definition() {
 
         $artistas = [
-            'Bad Bunny', 'Anuel AA', 'Ozuna', 'Rauw Alejandro', 'Pusho' 
+            'Bad Bunny', 'Anuel AA', 'Ozuna', 'Rauw Alejandro', 'Pusho',
             'C. Tangana', 'Rels B', 'Kidd Keo', 'Bejo', 'Yung Sarria', 'Yung Beef',
             'Duki', 'Khea', 'Cazzu', 'Neo Pistea', 'Trueno',
             'J Balvin', 'Maluma', 'Karol G', 'Nicky Jam', 'Sebastián Yatra',
