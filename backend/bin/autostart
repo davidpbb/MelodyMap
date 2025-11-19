@@ -1,0 +1,8 @@
+#!/bin/bash
+
+CURRENT_DIR=$(dirname "$0")/
+
+$CURRENT_DIR/build
+$CURRENT_DIR/migrate
+$CURRENT_DIR/seed
+echo "Aplicación iniciada, DB creada y con datos de prueba."
