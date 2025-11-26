@@ -1,0 +1,8 @@
+# !/bin/sh
+
+ROOT_DIR=$(dirname "$0")/..
+
+cd "$ROOT_DIR" || exit 1
+
+"$ROOT_DIR/bin/dockercompose" exec app chmod -R 777 storage bootstrap/cache
+echo "Permisos corregidos"

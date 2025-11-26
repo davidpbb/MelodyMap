@@ -2,8 +2,8 @@
 
 ROOT_DIR=$(dirname "$0")/..
 
-t_docker=$($ROOT_DIR/bin/dockercompose)
 
 echo "Levantando contenedores..."
 cd "$ROOT_DIR" || exit 1
-$t_docker up -d
+"$ROOT_DIR/bin/dockercompose" up -d
+./fixperms

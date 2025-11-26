@@ -1,8 +1,9 @@
 #!/bin/bash
 
-CURRENT_DIR=$(dirname "$0")/
+CURRENT_DIR=$(dirname "$0")
 
 $CURRENT_DIR/build
 $CURRENT_DIR/migrate
 $CURRENT_DIR/seed
-echo "Aplicación iniciada, DB creada y con datos de prueba."
+$CURRENT_DIR/fixperms
+echo "Aplicación iniciada, DB creada con datos de prueba y permisos de bootstrap/cache modificados."

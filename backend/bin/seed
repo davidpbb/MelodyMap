@@ -2,8 +2,6 @@
 
 ROOT_DIR=$(dirname "$0")/..
 
-t_docker=$($ROOT_DIR/bin/dockercompose)
-
 cd "$ROOT_DIR" || exit 1
-$t_docker exec app php artisan db:seed
+"$ROOT_DIR/bin/dockercompose" exec app php artisan db:seed
 echo "Base de datos poblada"

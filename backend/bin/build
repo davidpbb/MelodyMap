@@ -2,8 +2,6 @@
 
 ROOT_DIR=$(dirname "$0")/..
 
-t_docker=$($ROOT_DIR/bin/dockercompose)
-
 echo "Haciendo build..."
 cd "$ROOT_DIR" || exit 1
-$t_docker up -d --build --remove-orphans
+"$ROOT_DIR/bin/dockercompose" up -d --build --remove-orphans
