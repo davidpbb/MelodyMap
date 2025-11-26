@@ -1,5 +1,7 @@
 #!/bin/bash
 
-./stop
-./start
+CURRENT_DIR=$(dirname "$0")
+
+$CURRENT_DIR/stop
+$CURRENT_DIR/start
 echo "Contenedores reiniciados"
