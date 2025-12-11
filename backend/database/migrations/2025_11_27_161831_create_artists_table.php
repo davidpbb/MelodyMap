@@ -16,6 +16,14 @@ return new class extends Migration
             $table->string('name');
             $table->text('bio')->nullable();
             $table->string('image')->nullable();
+            $table->string('pais');
+            $table->string('genero');
+            $table->date('fecha_de_nacimiento');
+            $table->string('discográfica')->nullable();
+            $table->string('youtube');
+            $table->string('spotify')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('other_links')->nullable();
             $table->timestamps();
         });
     }

@@ -23,9 +23,9 @@ export default function Perfil() {
     if (!user) return <p>No se encontró el usuario.</p>;
 
     return (
-        <div>
-            <h1>Perfil</h1>
-
+        <div style={{ maxWidth: "900px", margin: "80px" }}>
+            <h1 style={{ marginBottom: "20px" }}>Perfil</h1>
+            
             <p><strong>ID:</strong> {user.id}</p>
             <p><strong>Nombre:</strong> {user.name}</p>
             <p><strong>Email:</strong> {user.email}</p>

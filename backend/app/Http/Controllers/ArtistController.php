@@ -23,7 +23,15 @@ class ArtistController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255|unique:artists,name',
             'bio' => 'nullable|string',
-            'image' => 'nullable|url'
+            'image' => 'nullable|url',
+            'pais' => 'required|string|max:255',
+            'genero' => 'required|string|max:255',
+            'fecha_de_nacimiento' => 'required|date',
+            'discográfica' => 'nullable|string|max:255',
+            'youtube' => 'required|url',
+            'spotify' => 'nullable|url',
+            'instagram' => 'nullable|url',
+            'other_links' => 'nullable|string|max:255'
         ]);
 
         $artist = Artist::create([
@@ -51,7 +59,15 @@ class ArtistController extends Controller
         $validated = $request->validate([
             'name' => 'sometimes|required|string|max:255',
             'bio' => 'sometimes|nullable|string',
-            'image' => 'sometimes|nullable|url'
+            'image' => 'sometimes|nullable|url',
+            'pais' => 'sometimes|required|string|max:255',
+            'genero' => 'sometimes|required|string|max:255',
+            'fecha_de_nacimiento' => 'sometimes|required|date',
+            'discográfica' => 'sometimes|nullable|string|max:255',
+            'youtube' => 'sometimes|required|url',
+            'spotify' => 'sometimes|nullable|url',
+            'instagram' => 'sometimes|nullable|url',
+            'other_links' => 'sometimes|nullable|string|max:255'
         ]);
 
         $artist->update($validated);

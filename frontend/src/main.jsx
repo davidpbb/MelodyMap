@@ -7,6 +7,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Profile from "./pages/Profile";
 import MainLayout from "./layouts/MainLayout";
 import Login from "./pages/Login";
+import RegistrarEscucha from './pages/RegistrarEscucha.jsx';
+import ProtectedRoute from './components/ProtectedRoute.jsx';
+import Logout from './components/Logout.jsx';
 
 const router = createBrowserRouter([
   {
@@ -14,8 +17,10 @@ const router = createBrowserRouter([
     element: <MainLayout />,
     children: [
       { path: "/", element: <App /> },
-      { path: "/profile", element: <Profile /> },
-      { path: "/login", element: <Login /> }
+      { path: "/profile", element: <ProtectedRoute><Profile /></ProtectedRoute> },
+      { path: "/login", element: <Login /> },
+      { path: "/logout", element: <ProtectedRoute><Logout /></ProtectedRoute> },
+      { path: "/registrar_escucha", element: <ProtectedRoute><RegistrarEscucha /></ProtectedRoute> }
     ]
   }
 ]);
