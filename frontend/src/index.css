@@ -18,6 +18,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+input {
+  border-radius: 5px;
+  padding: 5px;
+}
+
 a {
   font-weight: 500;
   color: #646cff;

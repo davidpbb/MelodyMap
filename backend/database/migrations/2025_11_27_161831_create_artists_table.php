@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('pais');
             $table->string('genero');
+            $table->string('genero_musical');
             $table->date('fecha_de_nacimiento');
             $table->string('discográfica')->nullable();
             $table->string('youtube');
