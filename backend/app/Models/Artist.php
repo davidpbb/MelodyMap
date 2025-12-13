@@ -9,7 +9,7 @@ class Artist extends Model
 {
     use HasFactory;
     
-    protected $fillable = ['name', 'bio', 'image'];
+    protected $fillable = ['name', 'bio', 'image', 'pais', 'genero', 'genero_musical', 'fecha_de_nacimiento', 'discográfica', 'youtube', 'spotify', 'instagram', 'other_links'];
 
     public function songs() {
         return $this->hasMany(Song::class);

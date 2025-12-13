@@ -30,8 +30,11 @@ const modalStyle = {
   borderRadius: "8px",
   position: "relative",
   minWidth: "300px",
-  height: "40vh",
-  width: "100vh"
+  height: "60vh",
+  width: "100vh",
+  maxHeight: "70vh",
+  overflowY: "auto",
+  paddingRight: "10px"
 };
 
 const closeButtonStyle = {
