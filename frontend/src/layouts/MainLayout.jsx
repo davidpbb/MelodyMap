@@ -18,10 +18,11 @@ export default function MainLayout() {
         <Link to="/"> <img src={headerLogo} alt="Logo" className="mb-6" /> </Link>
         <nav className="flex flex-col items-center gap-3">
           <Link to="/"> <b style={{color: "#09593c"}}>INICIO</b> </Link>
-          <Link to="/login"> <b style={{color: "#09593c"}}>LOGIN</b> </Link>
-          { localStorage.getItem("token") && <Link to="/profile"> <b style={{color: "#09593c"}}>MI PERFIL</b> </Link>}
+          { !localStorage.getItem("token") && <Link to="/login"> <b style={{color: "#09593c"}}>LOGIN</b> </Link>}
           { localStorage.getItem("token") && <Link to="/logout"> <b style={{color: "#09593c"}}>LOGOUT</b> </Link>}
+          { localStorage.getItem("token") && <Link to="/profile"> <b style={{color: "#09593c"}}>MI PERFIL</b> </Link>}
           { localStorage.getItem("token") && <Link to="/registrar_escucha"> <b style={{color: "#09593c"}}>REGISTRAR ESCUCHA</b> </Link>}
+          { localStorage.getItem("token") && <Link to="/dashboard"> <b style={{color: "#09593c"}}>DASHBOARD</b> </Link>}
         </nav>
       </aside>
 

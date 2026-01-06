@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SongController;
 use App\Http\Controllers\ArtistController;
+use App\Http\Controllers\ListenController;
+use App\Http\Controllers\PlaylistController;
 
 // Public user routes
 Route::post('/register', [AuthController::class, 'register']);
@@ -28,4 +30,20 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/artists/create', [ArtistController::class, 'store']);
     Route::patch('/artists/update/{artist}', [ArtistController::class, 'update']);
     Route::delete('/artists/delete/{artist}', [ArtistController::class, 'destroy']);
+
+    // Listen protected routes
+    Route::get('/listens', [ListenController::class, 'index']);
+    Route::post('/listens/create', [ListenController::class, 'store']);
+    Route::get('/listens/statistics', [ListenController::class, 'statistics']);
+    Route::get('/listens/{listen}', [ListenController::class, 'show']);
+    Route::delete('/listens/{listen}', [ListenController::class, 'destroy']);
+
+    // Playlist protected routes
+    Route::get('/playlists', [PlaylistController::class, 'index']);
+    Route::post('/playlists/create', [PlaylistController::class, 'store']);
+    Route::get('/playlists/{playlist}', [PlaylistController::class, 'show']);
+    Route::patch('/playlists/{playlist}', [PlaylistController::class, 'update']);
+    Route::delete('/playlists/{playlist}', [PlaylistController::class, 'destroy']);
+    Route::post('/playlists/{playlist}/songs', [PlaylistController::class, 'addSong']);
+    Route::delete('/playlists/{playlist}/songs', [PlaylistController::class, 'removeSong']);
 });
