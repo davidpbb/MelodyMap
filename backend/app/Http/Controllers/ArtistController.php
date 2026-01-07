@@ -23,23 +23,19 @@ class ArtistController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255|unique:artists,name',
             'bio' => 'nullable|string',
-            'image' => 'nullable|url',
+            'image' => 'nullable|string',
             'pais' => 'required|string|max:255',
             'genero' => 'required|string|max:255',
             'genero_musical' => 'required|string|max:255',
             'fecha_de_nacimiento' => 'required|date',
             'discográfica' => 'nullable|string|max:255',
-            'youtube' => 'required|url',
-            'spotify' => 'nullable|url',
-            'instagram' => 'nullable|url',
+            'youtube' => 'required|string',
+            'spotify' => 'nullable|string',
+            'instagram' => 'nullable|string',
             'other_links' => 'nullable|string|max:255'
         ]);
 
-        $artist = Artist::create([
-            'name' => $validated['name'],
-            'bio' => $validated['bio'] ?? null,
-            'image' => $validated['image'] ?? null
-        ]);
+        $artist = Artist::create($validated);
 
         return response()->json($artist, 201);
     }
@@ -60,15 +56,15 @@ class ArtistController extends Controller
         $validated = $request->validate([
             'name' => 'sometimes|required|string|max:255',
             'bio' => 'sometimes|nullable|string',
-            'image' => 'sometimes|nullable|url',
+            'image' => 'sometimes|nullable|string',
             'pais' => 'sometimes|required|string|max:255',
             'genero' => 'sometimes|required|string|max:255',
             'genero_musical' => 'sometimes|required|string|max:255',
             'fecha_de_nacimiento' => 'sometimes|required|date',
             'discográfica' => 'sometimes|nullable|string|max:255',
-            'youtube' => 'sometimes|required|url',
-            'spotify' => 'sometimes|nullable|url',
-            'instagram' => 'sometimes|nullable|url',
+            'youtube' => 'sometimes|required|string',
+            'spotify' => 'sometimes|nullable|string',
+            'instagram' => 'sometimes|nullable|string',
             'other_links' => 'sometimes|nullable|string|max:255'
         ]);
 

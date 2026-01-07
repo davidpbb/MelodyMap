@@ -8,6 +8,7 @@ use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\ListenController;
 use App\Http\Controllers\PlaylistController;
 use App\Http\Controllers\FriendshipController;
+use App\Http\Controllers\RecommendationController;
 
 // Public user routes
 Route::post('/register', [AuthController::class, 'register']);
@@ -57,4 +58,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/friends', [FriendshipController::class, 'getFriends']);
     Route::delete('/friends/remove/{friendId}', [FriendshipController::class, 'removeFriend']);
     Route::get('/friends/{friendId}/stats', [FriendshipController::class, 'getFriendStats']);
+
+    // Recommendations route
+    Route::get('/recommendations', [RecommendationController::class, 'getRecommendations']);
 });

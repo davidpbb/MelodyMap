@@ -264,6 +264,21 @@ class FriendshipController extends Controller
             ->limit(10)
             ->get();
 
+        // Obtener playlists creadas por el amigo
+        $playlists = DB::table('playlists')
+            ->where('user_id', $friendId)
+            ->leftJoin('playlist_song', 'playlists.id', '=', 'playlist_song.playlist_id')
+            ->select(
+                'playlists.id',
+                'playlists.name',
+                'playlists.description',
+                'playlists.created_at',
+                DB::raw('COUNT(playlist_song.song_id) as songs_count')
+            )
+            ->groupBy('playlists.id', 'playlists.name', 'playlists.description', 'playlists.created_at')
+            ->orderBy('playlists.created_at', 'desc')
+            ->get();
+
         return response()->json([
             'friend' => $friend,
             'stats' => [
@@ -271,7 +286,8 @@ class FriendshipController extends Controller
                 'unique_songs' => $uniqueSongs,
                 'unique_artists' => $uniqueArtists,
                 'top_songs' => $topSongs,
-                'top_artists' => $topArtists
+                'top_artists' => $topArtists,
+                'playlists' => $playlists
             ]
         ]);
     }

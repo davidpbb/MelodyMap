@@ -10,9 +10,16 @@ class SongController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json(Song::all());
+        $query = Song::with('artist');
+
+        // Filtrar por artist_id si se proporciona
+        if ($request->has('artist_id')) {
+            $query->where('artist_id', $request->artist_id);
+        }
+
+        return response()->json($query->get());
     }
 
     /**

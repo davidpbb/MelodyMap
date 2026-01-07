@@ -27,7 +27,7 @@ input, textarea {
 
 select {
   background-color: #3b3b3b;
-  color: rgba(255, 255, 255, 0.87);
+  color: #3b3b3b;
   border: 1px solid #444;
   border-radius: 5px;
   padding: 5px;

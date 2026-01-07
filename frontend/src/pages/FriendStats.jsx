@@ -17,9 +17,7 @@ export default function FriendStats() {
 
     const fetchFriendStats = async () => {
         try {
-            const response = await api.get(`/friends/${friendId}/stats`, {
-                headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
-            });
+            const response = await api.get(`/friends/${friendId}/stats`);
             setFriend(response.data.friend);
             setStats(response.data.stats);
         } catch (error) {
@@ -183,6 +181,21 @@ export default function FriendStats() {
                         🎤 Artistas Únicos
                     </div>
                 </div>
+
+                <div style={{
+                    backgroundColor: "white",
+                    padding: "30px",
+                    borderRadius: "12px",
+                    boxShadow: "0 2px 10px rgba(0,0,0,0.08)",
+                    textAlign: "center"
+                }}>
+                    <div style={{ fontSize: "48px", fontWeight: "bold", color: "#6b8b5e", marginBottom: "10px" }}>
+                        {stats.playlists?.length || 0}
+                    </div>
+                    <div style={{ fontSize: "14px", color: "#666", textTransform: "uppercase", letterSpacing: "1px" }}>
+                        📝 Playlists Creadas
+                    </div>
+                </div>
             </div>
 
             {/* Canción y artista favoritos */}
@@ -274,7 +287,8 @@ export default function FriendStats() {
                     backgroundColor: "white",
                     padding: "30px",
                     borderRadius: "10px",
-                    boxShadow: "0 2px 10px rgba(0,0,0,0.1)"
+                    boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
+                    marginBottom: "30px"
                 }}>
                     <h2 style={{ color: "#2d5016", marginBottom: "20px" }}>
                         🎤 Top 10 Artistas de {friend.name}
@@ -289,6 +303,97 @@ export default function FriendStats() {
                             <Bar dataKey="escuchas" fill="#7d9d6f" />
                         </BarChart>
                     </ResponsiveContainer>
+                </div>
+            )}
+
+            {/* Playlists Creadas */}
+            {stats.playlists && stats.playlists.length > 0 && (
+                <div style={{
+                    backgroundColor: "white",
+                    padding: "30px",
+                    borderRadius: "10px",
+                    boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
+                    marginBottom: "30px"
+                }}>
+                    <h2 style={{ color: "#2d5016", marginBottom: "20px" }}>
+                        🎵 Playlists Creadas por {friend.name}
+                    </h2>
+                    <div style={{
+                        display: "grid",
+                        gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+                        gap: "20px"
+                    }}>
+                        {stats.playlists.map(playlist => (
+                            <div
+                                key={playlist.id}
+                                onClick={() => navigate(`/playlists`)}
+                                style={{
+                                    padding: "20px",
+                                    backgroundColor: "#f8f9fa",
+                                    borderRadius: "12px",
+                                    border: "2px solid #e0e0e0",
+                                    cursor: "pointer",
+                                    transition: "all 0.3s"
+                                }}
+                                onMouseEnter={(e) => {
+                                    e.currentTarget.style.backgroundColor = "#e9ecef";
+                                    e.currentTarget.style.borderColor = "#2d5016";
+                                    e.currentTarget.style.transform = "translateY(-2px)";
+                                    e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.15)";
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.backgroundColor = "#f8f9fa";
+                                    e.currentTarget.style.borderColor = "#e0e0e0";
+                                    e.currentTarget.style.transform = "translateY(0)";
+                                    e.currentTarget.style.boxShadow = "none";
+                                }}
+                            >
+                                <div style={{
+                                    fontWeight: "bold",
+                                    fontSize: "18px",
+                                    color: "#2d5016",
+                                    marginBottom: "10px",
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    whiteSpace: "nowrap"
+                                }}>
+                                    {playlist.name}
+                                </div>
+                                {playlist.description && (
+                                    <div style={{
+                                        fontSize: "14px",
+                                        color: "#666",
+                                        marginBottom: "12px",
+                                        overflow: "hidden",
+                                        textOverflow: "ellipsis",
+                                        display: "-webkit-box",
+                                        WebkitLineClamp: 2,
+                                        WebkitBoxOrient: "vertical",
+                                        lineHeight: "1.4"
+                                    }}>
+                                        {playlist.description}
+                                    </div>
+                                )}
+                                <div style={{
+                                    fontSize: "13px",
+                                    color: "#999",
+                                    display: "flex",
+                                    justifyContent: "space-between",
+                                    alignItems: "center",
+                                    marginTop: "auto"
+                                }}>
+                                    <span>🎵 {playlist.songs_count} canción{playlist.songs_count !== 1 ? 'es' : ''}</span>
+                                    <span style={{ fontSize: "11px" }}>
+                                        {new Date(playlist.created_at).toLocaleDateString('es-ES', { 
+                                            year: 'numeric', 
+                                            month: 'short', 
+                                            day: 'numeric' 
+                                        })}
+                                    </span>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             )}
 

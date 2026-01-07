@@ -8,11 +8,11 @@ use App\Models\Playlist;
 class PlaylistController extends Controller
 {
     /**
-     * Display a listing of the user's playlists.
+     * Display a listing of all playlists (public for all users).
      */
     public function index(Request $request)
     {
-        $playlists = Playlist::where('user_id', $request->user()->id)
+        $playlists = Playlist::with('user:id,name')
             ->withCount('songs')
             ->orderBy('created_at', 'desc')
             ->get();
@@ -36,20 +36,15 @@ class PlaylistController extends Controller
             'description' => $validated['description'] ?? null
         ]);
 
-        return response()->json($playlist, 201);
+        return response()->json($playlist->load('user:id,name'), 201);
     }
 
     /**
-     * Display the specified playlist.
+     * Display the specified playlist (public for all users).
      */
     public function show(Playlist $playlist)
     {
-        // Verificar que la playlist pertenece al usuario autenticado
-        if ($playlist->user_id !== auth()->id()) {
-            return response()->json(['error' => 'Unauthorized'], 403);
-        }
-        
-        return response()->json($playlist->load(['songs.artist']));
+        return response()->json($playlist->load(['songs.artist', 'user:id,name']));
     }
 
     /**
