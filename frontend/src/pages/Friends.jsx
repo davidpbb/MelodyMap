@@ -314,7 +314,7 @@ export default function Friends() {
                 </div>
             )}
 
-            {/* TAB: Solicitudes Pendientes */}
+            {/* Solicitudes Pendientes */}
             {activeTab === "pending" && (
                 <div>
                     {pendingRequests.length === 0 ? (
@@ -406,7 +406,7 @@ export default function Friends() {
                 </div>
             )}
 
-            {/* TAB: Buscar Amigos */}
+            {/* Buscar Amigos */}
             {activeTab === "search" && (
                 <div>
                     <div style={{

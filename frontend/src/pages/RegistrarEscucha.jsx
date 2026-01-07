@@ -4,13 +4,15 @@ import api from "../api/axios";
 import Modal from "../components/Modal.jsx";
 
 export default function RegistrarEscucha() {
+    const fechaHoraActual = new Date();
+    fechaHoraActual.setHours(fechaHoraActual.getHours() + 1);
     const navigate = useNavigate();
     const [step, setStep] = useState(1);
     const [artists, setArtists] = useState([]);
     const [songs, setSongs] = useState([]);
     const [selectedArtist, setSelectedArtist] = useState(null);
     const [selectedSong, setSelectedSong] = useState(null);
-    const [listenDate, setListenDate] = useState(new Date().toISOString().slice(0, 16));
+    const [listenDate, setListenDate] = useState(fechaHoraActual.toISOString().slice(0, 16));
     
     // Modal de nuevo artista
     const [isArtistModalOpen, setIsArtistModalOpen] = useState(false);
