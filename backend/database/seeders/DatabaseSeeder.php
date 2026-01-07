@@ -28,6 +28,13 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('davidboss123')
         ]);
 
+        // Crear otro usuario para probar amigos
+        User::create([
+            'name' => 'David Boss Xd Junior',
+            'email' => 'david2@melodymap.com',
+            'password' => Hash::make('davidboss123')
+        ]);
+
         $users = User::factory()->count(10)->create();
 
         $artists = Artist::factory()->count(10)->create();

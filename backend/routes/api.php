@@ -7,6 +7,7 @@ use App\Http\Controllers\SongController;
 use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\ListenController;
 use App\Http\Controllers\PlaylistController;
+use App\Http\Controllers\FriendshipController;
 
 // Public user routes
 Route::post('/register', [AuthController::class, 'register']);
@@ -46,4 +47,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/playlists/{playlist}', [PlaylistController::class, 'destroy']);
     Route::post('/playlists/{playlist}/songs', [PlaylistController::class, 'addSong']);
     Route::delete('/playlists/{playlist}/songs', [PlaylistController::class, 'removeSong']);
+
+    // Friendship routes
+    Route::get('/friends/search', [FriendshipController::class, 'searchUsers']);
+    Route::post('/friends/send-request', [FriendshipController::class, 'sendRequest']);
+    Route::get('/friends/pending', [FriendshipController::class, 'getPendingRequests']);
+    Route::post('/friends/accept/{friendshipId}', [FriendshipController::class, 'acceptRequest']);
+    Route::delete('/friends/reject/{friendshipId}', [FriendshipController::class, 'rejectRequest']);
+    Route::get('/friends', [FriendshipController::class, 'getFriends']);
+    Route::delete('/friends/remove/{friendId}', [FriendshipController::class, 'removeFriend']);
+    Route::get('/friends/{friendId}/stats', [FriendshipController::class, 'getFriendStats']);
 });

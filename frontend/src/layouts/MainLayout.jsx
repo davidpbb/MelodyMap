@@ -21,6 +21,7 @@ export default function MainLayout() {
           { !localStorage.getItem("token") && <Link to="/login"> <b style={{color: "#09593c"}}>LOGIN</b> </Link>}
           { localStorage.getItem("token") && <Link to="/logout"> <b style={{color: "#09593c"}}>LOGOUT</b> </Link>}
           { localStorage.getItem("token") && <Link to="/profile"> <b style={{color: "#09593c"}}>MI PERFIL</b> </Link>}
+          { localStorage.getItem("token") && <Link to="/friends"> <b style={{color: "#09593c"}}>AMIGOS</b> </Link>}
           { localStorage.getItem("token") && <Link to="/registrar_escucha"> <b style={{color: "#09593c"}}>REGISTRAR ESCUCHA</b> </Link>}
           { localStorage.getItem("token") && <Link to="/dashboard"> <b style={{color: "#09593c"}}>DASHBOARD</b> </Link>}
         </nav>

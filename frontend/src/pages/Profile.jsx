@@ -95,7 +95,7 @@ export default function Profile() {
         );
     }
 
-    // Calcular fecha de registro
+    // Calculate registration date
     const memberSince = user.created_at ? new Date(user.created_at).toLocaleDateString('es-ES', {
         year: 'numeric',
         month: 'long',
@@ -394,7 +394,7 @@ export default function Profile() {
                         📊 Ver Dashboard
                     </button>
 
-                    <button
+                    <button disabled
                         onClick={() => navigate("/spotify")}
                         style={{
                             padding: "20px",
@@ -410,7 +410,7 @@ export default function Profile() {
                         onMouseEnter={(e) => e.target.style.transform = "scale(1.05)"}
                         onMouseLeave={(e) => e.target.style.transform = "scale(1)"}
                     >
-                        🎵 Conectar Spotify
+                        🎵 Conectar Spotify (próximamente)
                     </button>
                 </div>
             </div>

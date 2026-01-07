@@ -9,6 +9,8 @@ import MainLayout from "./layouts/MainLayout";
 import Login from "./pages/Login";
 import RegistrarEscucha from './pages/RegistrarEscucha.jsx';
 import Dashboard from './pages/Dashboard.jsx';
+import Friends from './pages/Friends.jsx';
+import FriendStats from './pages/FriendStats.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 import Logout from './components/Logout.jsx';
 
@@ -20,6 +22,8 @@ const router = createBrowserRouter([
       { path: "/", element: <App /> },
       { path: "/profile", element: <ProtectedRoute><Profile /></ProtectedRoute> },
       { path: "/dashboard", element: <ProtectedRoute><Dashboard /></ProtectedRoute> },
+      { path: "/friends", element: <ProtectedRoute><Friends /></ProtectedRoute> },
+      { path: "/friends/:friendId/stats", element: <ProtectedRoute><FriendStats /></ProtectedRoute> },
       { path: "/login", element: <Login /> },
       { path: "/logout", element: <ProtectedRoute><Logout /></ProtectedRoute> },
       { path: "/registrar_escucha", element: <ProtectedRoute><RegistrarEscucha /></ProtectedRoute> }

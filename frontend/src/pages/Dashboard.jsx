@@ -62,7 +62,7 @@ export default function Dashboard() {
         </div>
     );
 
-    // Colores para los gráficos (tema MelodyMap)
+    // Colores para los gráficos
     const COLORS = ['#2d5016', '#7d9d6f', '#f5e6d3', '#9cb88d', '#556b2f', '#8fbc8f'];
 
     // Preparar datos para gráfico de top canciones
